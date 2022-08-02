@@ -37,12 +37,11 @@ const Navbar = (props) => {
           {localStorage.getItem("user") ? (
               <Fragment>
                 <NavButton to="/Profile" label="Profile" />
+                <NavButton to="/Review" label="Your Reviews" />
                 <NavButton to="/Search" label="Search" />
                 <NavButton to="/Watched" label="Watched" />
                 <NavButton to="/Favorites" label="Favorites" />
                 <NavButton to="/WantToWatch" label="Want To Watch" />
-                <NavButton to="/profile" label="Profile" />
-                <NavButton to="/Review" label="Write Reviews" />
               </Fragment>
             ) : (
               <Fragment>

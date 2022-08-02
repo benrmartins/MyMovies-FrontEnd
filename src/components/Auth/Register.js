@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import AuthService from "../services/auth.service"
 import { useNavigate } from "react-router-dom";
+import Container from "../common/Container";
+import Form from "../common/Form";
+import InlineInputContainer from "../common/InlineInputContainer";
+import Input from "../common/Input";
+import Button from "../common/Button";
 
 
 const Register = () => {
@@ -27,24 +32,32 @@ const Register = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSignup}>
-        <h3>Sign up</h3>
-        <input
-          type="text"
-          placeholder="email"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Sign up</button>
-      </form>
-    </div>
+
+    <Container>
+      <h1>Register</h1>
+      <Form onSubmit={handleSignup} style={{marginTop: '1em'}}>
+        <InlineInputContainer>
+          <Input 
+            type="text"
+            placeholder="email"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </InlineInputContainer>
+        <InlineInputContainer>
+          <Input
+            type="password"
+            placeholder="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </InlineInputContainer>
+        <Button>Submit</Button>
+      </Form>
+    </Container>
+
+
+
   );
 };
 
