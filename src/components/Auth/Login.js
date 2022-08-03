@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios, { Axios } from "axios";
 import { useNavigate } from "react-router-dom";
 import AuthService from "../services/auth.service";
 import Form from "../common/Form";
@@ -20,7 +21,7 @@ const Login = () => {
     try {
       await AuthService.login(username, password).then(
         () => {
-          navigate("/");
+          navigate("/Profile");
           window.location.reload();
         },
         (error) => {
@@ -31,6 +32,23 @@ const Login = () => {
       console.log(err);
     }
   };
+
+  const getYourProfiles = async () => {
+    try {
+      await axios.get('http://localhost:8787/api/profile/', { headers: {"Authorization": `Bearer ${JSON.parse(localStorage.getItem("user")).token}`}}).then((response) => {
+        console.log(response.data)
+        console.log(JSON.parse(localStorage.getItem("user")).username)
+        for (let i = 0; i < response.data.length; i++) {
+          if(response.data[i].user.username == JSON.parse(localStorage.getItem("user")).username) {
+            console.log("hi")
+            localStorage.setItem("profile", JSON.stringify(response.data[i]));
+          }
+        }
+    });
+    } catch(err) {
+      console.log(err)
+    }
+  }
 
   return (
     <Container>
@@ -52,7 +70,7 @@ const Login = () => {
         onChange={(e) => setPassword(e.target.value)}
         />
       </InlineInputContainer>
-      <Button>Submit</Button>
+      <Button onClick={getYourProfiles}>Submit</Button>
     </Form>
     </Container>
 

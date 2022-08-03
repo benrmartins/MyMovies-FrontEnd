@@ -15,9 +15,11 @@ const signup = (firstName, lastName, age, email, favoriteGenre) => {
         localStorage.setItem("profile", JSON.stringify(response.data));
         return response.data;
       });
-
-
 };
+
+
+
+
 
 const profileService = {
     signup

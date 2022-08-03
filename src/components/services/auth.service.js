@@ -1,6 +1,11 @@
-import axios from "axios";
+import axios, { Axios } from "axios";
 
 const API_URL = "http://localhost:8787/api/auth";
+
+
+
+
+
 
 const signup = (username, password) => {
   return axios
@@ -11,6 +16,7 @@ const signup = (username, password) => {
     .then((response) => {
       if (response.data.token) {
         localStorage.setItem("user", JSON.stringify(response.data));
+
       }
 
       return response.data;
@@ -34,6 +40,8 @@ const login = (username, password) => {
 
 const logout = () => {
   localStorage.removeItem("user");
+  localStorage.removeItem("profile");
+
 };
 
 const getCurrentUser = () => {

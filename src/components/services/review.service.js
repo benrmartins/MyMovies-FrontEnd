@@ -12,8 +12,8 @@ const postReviews = (movieTitle, body, rating) => {
 
 };
 
-const getReviews = () => {
-    return axios
+const getReviews = async() => {
+    return await axios
       .get(API_URL + `/profile/${JSON.parse(localStorage.getItem("profile")).id}`,  
     { headers: {"Authorization": `Bearer ${JSON.parse(localStorage.getItem("user")).token}`} })
   };

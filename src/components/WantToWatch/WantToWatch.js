@@ -3,7 +3,7 @@ import React from 'react'
 const WantToWatch = () => {
   return (
     <div>
-      <h1>Wan To Watch</h1>
+      <h1>Want To Watch</h1>
     </div>
   )
 }
