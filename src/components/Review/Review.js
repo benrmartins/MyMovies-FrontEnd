@@ -59,7 +59,6 @@ const Review = () => {
     })
   }
   
-  console.log(ReviewService.getReviews())
 
 
 
