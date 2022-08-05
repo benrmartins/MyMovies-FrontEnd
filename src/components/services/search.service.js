@@ -22,11 +22,17 @@ const getNowPlaying = async() => {
     .get(API_URL + "/nowplaying", { headers: {"Authorization": `Bearer ${JSON.parse(localStorage.getItem("user")).token}`} })
 };
 
+const getSearchByTitle = async (title) => {
+    return await axios
+    .get(API_URL + `/${title}`, { headers: {"Authorization": `Bearer ${JSON.parse(localStorage.getItem("user")).token}`} })
+}
+
 const searchService = {
     getUpComming,
     getTopRated,
     getPopular,
-    getNowPlaying
+    getNowPlaying,
+    getSearchByTitle
   };
 
   export default searchService

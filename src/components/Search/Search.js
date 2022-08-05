@@ -3,12 +3,15 @@ import searchService from '../services/search.service'
 import Button from "../common/Button";
 import Container from "../common/Container";
 import Form from "../common/Form";
+import InlineInputContainer from "../common/InlineInputContainer";
+import Input from "../common/Input";
 
 
 const Search = () => {
   
   const [search, setSearch] = useState("")
   const [searchdata, setSearchData] = useState([])
+  const [title, setTitle] = useState("")
 
   const changeSearch = (search) => {
     setSearch(search)
@@ -28,6 +31,8 @@ const Search = () => {
     } else if(search === "nowPlaying") {
       const res = await searchService.getNowPlaying();
       setSearchData(res.data.results)
+    } else {
+      getSeachTitle()
     }
   }
 
@@ -38,6 +43,11 @@ const Search = () => {
         <p key={search.id}>Movie Title: {search.title}</p>
       )
     })
+  }
+
+  const getSeachTitle = async () => {
+    const res = await searchService.getSearchByTitle(title)
+    setSearchData(res.data.results)
   }
 
   
@@ -56,6 +66,17 @@ const Search = () => {
           <option value="nowPlaying">Now PLaying Movies in Theaters</option>
       </select>
       
+      <h3>Search By Title</h3>
+      <InlineInputContainer>
+          <Input
+            type="text"
+            placeholder="Input title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+        </InlineInputContainer>
+
+
       </Form>
       <Button onClick={getSearchData}>Search</Button>
 

@@ -39,11 +39,8 @@ const Profile = () => {
   const getYourProfiles = async () => {
     try {
       await axios.get('http://localhost:8787/api/profile/', { headers: {"Authorization": `Bearer ${JSON.parse(localStorage.getItem("user")).token}`}}).then((response) => {
-        console.log(response.data)
-        console.log(JSON.parse(localStorage.getItem("user")).username)
         for (let i = 0; i < response.data.length; i++) {
           if(response.data[i].user.username == JSON.parse(localStorage.getItem("user")).username) {
-            console.log("hi")
             localStorage.setItem("profile", JSON.stringify(response.data[i]));
           }
         }
