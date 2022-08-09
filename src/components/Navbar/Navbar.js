@@ -1,12 +1,18 @@
 import React, { Fragment, useContext } from 'react';
 import NavButton from './NavButton';
+import { useNavigate } from "react-router-dom";
+
 
 const Navbar = (props) => {
+
+  const navigate = useNavigate();
+
 
   const logout = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("profile");
-    window.location.reload(false); 
+    navigate("/");
+
    };
 
   return (

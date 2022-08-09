@@ -6,7 +6,8 @@ import Form from "../common/Form";
 import InlineInputContainer from "../common/InlineInputContainer";
 import Input from "../common/Input";
 import Button from "../common/Button";
-
+import BorderCardAdv from "../common/BorderCardAdv";
+import HorizontalLine from "../common/HorizontalLine";
 
 
 const Review = () => {
@@ -38,6 +39,7 @@ const Review = () => {
 
 
   const reviewGet = async (e) => {
+    setReviews([])
     try {
       const res = await ReviewService.getReviews();
 
@@ -53,8 +55,13 @@ const Review = () => {
     console.log("hi")
     return reviews.map(review => {
       return(
-      <p key={review.id}>Movie Title: {review.movieTitle} Body: {review.body} Rate: {review.rating}</p>
-    
+        <BorderCardAdv>
+            <p key={review.id}>Movie Title: {review.movieTitle }</p>
+            <p key={review.id}>Body: {review.body }</p>
+            <p key={review.id}>Rate: {review.rating}</p>
+        </BorderCardAdv>
+
+      
       )
     })
   }

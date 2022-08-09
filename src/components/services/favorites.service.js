@@ -4,7 +4,7 @@ const API_URL = "http://localhost:8787/api/favorites";
 
 const postFavorites = (title) => {
     return axios
-      .post(API_URL + `/${JSON.parse(localStorage.getItem("profile")).id}/${title}`, 
+      .post(API_URL + `/${JSON.parse(localStorage.getItem("profile")).id}/${title}`, {} ,
       { headers: {"Authorization": `Bearer ${JSON.parse(localStorage.getItem("user")).token}`} },)
   
   };
@@ -30,5 +30,5 @@ const deleteFavorites = (favoritesId) => {
 
   };
 
-  export default searchService
+  export default favoritesService
 

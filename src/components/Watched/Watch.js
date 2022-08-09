@@ -1,5 +1,6 @@
 import React, { useState, Fragment } from 'react'
 import watchedService from '../services/watched.service'
+import HorizontalLine from '../common/HorizontalLine';
 import Button from "../common/Button";
 import Container from "../common/Container";
 import Form from "../common/Form";
@@ -26,7 +27,16 @@ const Watch = () => {
   const displayWatched = () => {
     return watchedData.map(watched => {
       return(
-        <p key={watched.id}>Movie Title: {watched.title}</p>
+        <Container>
+          <HorizontalLine></HorizontalLine>
+
+          <img src={"https://image.tmdb.org/t/p/w500/"+watched.poster_path} alt = ""/>
+          <p key={watched.id}>Movie Title: {watched.title}</p>   
+          <p key={watched.id}>Movie Release Date: {watched.release_date}</p>          
+          <p key={watched.id}>Movie Rating: {watched.vote_average}</p>          
+          <p key={watched.id}>Movie Overview: {watched.overview}</p>
+
+        </Container>
       )
     })
   }
@@ -36,7 +46,7 @@ const Watch = () => {
   return (
     <Container>
       <Form>
-        <h3>Save To Watched</h3>
+        <h1>Save To Watched</h1>
         <InlineInputContainer>
             <Input
               type="text"

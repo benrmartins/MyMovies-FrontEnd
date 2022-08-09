@@ -4,7 +4,7 @@ const API_URL = "http://localhost:8787/api/watched";
 
 const postWatched = (title) => {
     return axios
-      .post(API_URL + `/${JSON.parse(localStorage.getItem("profile")).id}/${title}`, 
+      .post(API_URL + `/${JSON.parse(localStorage.getItem("profile")).id}/${title}`, {},
       { headers: {"Authorization": `Bearer ${JSON.parse(localStorage.getItem("user")).token}`} },)
   
   };

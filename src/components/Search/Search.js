@@ -5,7 +5,8 @@ import Container from "../common/Container";
 import Form from "../common/Form";
 import InlineInputContainer from "../common/InlineInputContainer";
 import Input from "../common/Input";
-
+import BorderCard from "../common/BorderCard";
+import HorizontalLine from "../common/HorizontalLine";
 
 const Search = () => {
   
@@ -19,6 +20,7 @@ const Search = () => {
 
 
   const getSearchData = async () => {
+    setSearchData([])
     if(search === "upComming") {
       const res = await searchService.getUpComming();
       setSearchData(res.data.results)
@@ -40,7 +42,19 @@ const Search = () => {
     console.log(searchdata)
     return searchdata.map(search => {
       return(
-        <p key={search.id}>Movie Title: {search.title}</p>
+        
+
+        <Container>
+  
+
+          <img src={"https://image.tmdb.org/t/p/w500/"+search.poster_path} alt = ""/>
+          <p key={search.id}>Movie Title: {search.title}</p>
+          <p key={search.id}>Movie Release Date: {search.release_date}</p>          
+          <p key={search.id}>Movie Rating: {search.vote_average}</p>          
+          <p key={search.id}>Movie Overview: {search.overview}</p>
+          <HorizontalLine>        </HorizontalLine>
+
+        </Container>
       )
     })
   }

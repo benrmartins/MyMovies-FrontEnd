@@ -21,7 +21,7 @@ const Login = () => {
     try {
       await AuthService.login(username, password).then(
         () => {
-          navigate("/Profile");
+          navigate("/profile");
           window.location.reload();
         },
         (error) => {
