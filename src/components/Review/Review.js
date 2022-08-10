@@ -55,10 +55,11 @@ const Review = () => {
     console.log("hi")
     return reviews.map(review => {
       return(
-        <BorderCardAdv>
-            <p key={review.id}>Movie Title: {review.movieTitle }</p>
-            <p key={review.id}>Body: {review.body }</p>
+        <BorderCardAdv style={{flexDirection: "column"}}>
+            <p key={review.id}>Movie Title: {review.movieTitle}</p>
+            <p key={review.id}>Body: {review.body}</p>
             <p key={review.id}>Rate: {review.rating}</p>
+            
         </BorderCardAdv>
 
       

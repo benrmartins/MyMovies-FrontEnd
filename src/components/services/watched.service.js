@@ -18,7 +18,7 @@ const getWatched = () => {
 
 const deleteWatched = (watchedId) => {
     return axios
-      .delete(API_URL + `/${watchedId}`, 
+      .delete(API_URL + `/${watchedId}/`, 
       { headers: {"Authorization": `Bearer ${JSON.parse(localStorage.getItem("user")).token}`} },)
   
   };

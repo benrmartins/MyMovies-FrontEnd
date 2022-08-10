@@ -22,6 +22,19 @@ const WantToWatch = () => {
     
   }
 
+
+  const deleteWantToWatchTitle = async () => {
+    let newId = 0
+    wantToWatchData.map(wantToWatch => {
+      if(wantToWatch.title === title) {
+        newId = wantToWatch.id
+      }
+    })
+    await wantToWatchService.deleteWantToWatch(newId)
+   
+  }
+
+
   const displayWantToWatch = () => {
     return wantToWatchData.map(wantToWatch => {
       return(
@@ -54,9 +67,11 @@ const WantToWatch = () => {
             />
           </InlineInputContainer>
       </Form>
-      <Button onClick={postWantToWatchTitle}>Post To Watched List</Button>
+      <Button onClick={postWantToWatchTitle}>Post To Want To Watch List</Button>
 
-      <Button onClick={getWantToWatchTitle}>Get Your Watched List</Button>
+      <Button onClick={deleteWantToWatchTitle}>Delete Title From Want To Watch List</Button>
+
+      <Button onClick={getWantToWatchTitle}>Get Your Want To Watch List</Button>
 
       {wantToWatchData.length == 0 ? null : (
         <Fragment>

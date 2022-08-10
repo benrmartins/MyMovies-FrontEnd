@@ -17,12 +17,19 @@ const signup = (firstName, lastName, age, email, favoriteGenre) => {
       });
 };
 
+const deleteProfile = () => {
+  return axios
+    .delete(API_URL + `/profile/${JSON.parse(localStorage.getItem("profile")).id}`, 
+    { headers: {"Authorization": `Bearer ${JSON.parse(localStorage.getItem("user")).token}`} },)
+}
+
 
 
 
 
 const profileService = {
-    signup
+    signup,
+    deleteProfile
   };
 
 export default profileService

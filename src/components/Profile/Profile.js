@@ -50,6 +50,10 @@ const Profile = () => {
     }
   }
 
+  const deleteProfile = async () => {
+    getYourProfiles()
+    await ProfileServices.deleteProfile()
+  }
 
   return (
     
@@ -100,6 +104,9 @@ const Profile = () => {
       </Form>
 
       <Button onClick={getYourProfiles}>Sign into profile if already created one</Button>
+
+      <Button onClick={deleteProfile}>Delete Profile</Button>
+
     </Container>
 
 

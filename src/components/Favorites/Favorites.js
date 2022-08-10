@@ -22,6 +22,17 @@ const Favorites = () => {
     
   }
 
+  const deleteFavoriteTitle = async () => {
+    let newId = 0
+    favoriteData.map(favorite => {
+      if(favorite.title === title) {
+        newId = favorite.id
+      }
+    })
+    await favoritesService.deleteFavorites(newId)
+   
+  }
+
   const displayFavorites= () => {
     return favoriteData.map(favorite => {
       return(
@@ -54,6 +65,9 @@ const Favorites = () => {
           </InlineInputContainer>
       </Form>
       <Button onClick={postFavoritesTitle}>Post To Favorites List</Button>
+
+      <Button onClick={deleteFavoriteTitle}>Delete Title From Watched List</Button>
+
 
       <Button onClick={getFavoritesTitle}>Get Your Favorites List</Button>
 

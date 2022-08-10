@@ -24,6 +24,17 @@ const Watch = () => {
     
   }
 
+  const deleteWatchedTitle = async () => {
+    let newId = 0
+    watchedData.map(watched => {
+      if(watched.title === title) {
+        newId = watched.id
+      }
+    })
+    await watchedService.deleteWatched(newId)
+   
+  }
+
   const displayWatched = () => {
     return watchedData.map(watched => {
       return(
@@ -58,7 +69,10 @@ const Watch = () => {
       </Form>
       <Button onClick={postWatchedTitle}>Post To Watched List</Button>
 
+      <Button onClick={deleteWatchedTitle}>Delete Title From Watch List</Button>
+
       <Button onClick={getWatchedTitle}>Get Your Watched List</Button>
+
 
       {watchedData.length == 0 ? null : (
         <Fragment>
