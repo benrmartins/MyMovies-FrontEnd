@@ -24,15 +24,20 @@ const Review = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      await ReviewService.postReviews(movieTitle, body, rating).then(
-        (response) => {
-          navigate("/Review");
-          window.location.reload();
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+      if(movieTitle != "" && body != "" && rating != "") {
+        await ReviewService.postReviews(movieTitle, body, rating).then(
+          (response) => {
+            navigate("/Review");
+            window.location.reload();
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+        alert("Sucessfully Submited the Review")
+      } else {
+        alert("Please input information")
+      }
     } catch (err) {
       console.log(err);
     }
@@ -66,19 +71,24 @@ const Review = () => {
   }
 
   const deleteReviewTitle = async () => {
-    let newId = 0
-    reviews.map(review => {
+    try {
+      let newId = 0
+      reviews.map(review => {
       if(review.movieTitle === movieTitle) {
         newId = review.id
       }
-    })
-    await reviewService.deleteReviews(newId)
+      })
+      await reviewService.deleteReviews(newId)
+      alert("Sucessfully deleted the title")
+    } catch (error) {
+      alert("There is no review with that movie title")
+    }
+    
    
   }
 
 
   const displayReviews = () => {
-    console.log("hi")
     return reviews.map(review => {
       return(
         <BorderCardAdv style={{flexDirection: "column", textAlign: "center"}}>

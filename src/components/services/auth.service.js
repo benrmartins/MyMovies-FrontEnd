@@ -4,9 +4,6 @@ const API_URL = "http://localhost:8787/api/auth";
 
 
 
-
-
-
 const signup = (username, password) => {
   return axios
     .post(API_URL + "/signup", {
@@ -16,9 +13,7 @@ const signup = (username, password) => {
     .then((response) => {
       if (response.data.token) {
         localStorage.setItem("user", JSON.stringify(response.data));
-
       }
-
       return response.data;
     });
 };
@@ -35,7 +30,9 @@ const login = (username, password) => {
       }
 
       return response.data;
-    });
+    }).catch((err) => {
+      alert("Incorrect Login Information")
+    })
 };
 
 const logout = () => {

@@ -15,7 +15,14 @@ const Watch = () => {
   const [watchedData, setWatchedData] = useState([])
 
   const postWatchedTitle = async () => {
-    await watchedService.postWatched(title)
+
+    try {
+      await watchedService.postWatched(title)
+      alert("Successfully posted movie to Watched List")
+    } catch (error) {
+      alert("Title does not exists in Watched List")
+
+    }
   }
 
   const getWatchedTitle = async () => {
@@ -25,13 +32,20 @@ const Watch = () => {
   }
 
   const deleteWatchedTitle = async () => {
-    let newId = 0
-    watchedData.map(watched => {
-      if(watched.title === title) {
-        newId = watched.id
-      }
-    })
-    await watchedService.deleteWatched(newId)
+    try {
+      let newId = 0
+      watchedData.map(watched => {
+        if(watched.title === title) {
+          newId = watched.id
+        }
+      })
+      await watchedService.deleteWatched(newId)
+      alert("Successfully deleted the title")
+    } catch (error) {
+      alert("Watched List does not contain the title")
+
+    }
+   
    
   }
 

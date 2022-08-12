@@ -42,26 +42,27 @@ const Search = () => {
     console.log(searchdata)
     return searchdata.map(search => {
       return(
-        
-
         <Container>
-  
-
-          <img src={"https://image.tmdb.org/t/p/w500/"+search.poster_path} alt = ""/>
+         <img src={"https://image.tmdb.org/t/p/w500/"+search.poster_path} alt = ""/>
           <p key={search.id}>Movie Title: {search.title}</p>
           <p key={search.id}>Movie Release Date: {search.release_date}</p>          
           <p key={search.id}>Movie Rating: {search.vote_average}</p>          
           <p key={search.id}>Movie Overview: {search.overview}</p>
           <HorizontalLine>        </HorizontalLine>
-
         </Container>
       )
     })
   }
 
   const getSeachTitle = async () => {
-    const res = await searchService.getSearchByTitle(title)
-    setSearchData(res.data.results)
+
+    try {
+      const res = await searchService.getSearchByTitle(title)
+      setSearchData(res.data.results)
+    } catch (error) {
+      alert("There is no movie by that title")
+    }
+    
   }
 
   

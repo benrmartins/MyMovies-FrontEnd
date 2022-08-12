@@ -21,7 +21,7 @@ const Login = () => {
     try {
       await AuthService.login(username, password).then(
         () => {
-          navigate("/profile");
+          navigate("/");
           window.location.reload();
         },
         (error) => {
@@ -40,7 +40,6 @@ const Login = () => {
         console.log(JSON.parse(localStorage.getItem("user")).username)
         for (let i = 0; i < response.data.length; i++) {
           if(response.data[i].user.username == JSON.parse(localStorage.getItem("user")).username) {
-            console.log("hi")
             localStorage.setItem("profile", JSON.stringify(response.data[i]));
           }
         }

@@ -31,6 +31,7 @@ const Profile = () => {
           console.log(error);
         }
       );
+      alert("Succefuly created a profile")
     } catch (err) {
       console.log(err);
     }
@@ -44,6 +45,8 @@ const Profile = () => {
             localStorage.setItem("profile", JSON.stringify(response.data[i]));
           }
         }
+        alert("Succefuly Signed Into Your Proflie")
+
     });
     } catch(err) {
       console.log(err)
@@ -54,6 +57,8 @@ const Profile = () => {
     getYourProfiles()
     await ProfileServices.deleteProfile()
   }
+
+ 
 
   return (
     

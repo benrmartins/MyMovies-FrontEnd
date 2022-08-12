@@ -13,7 +13,13 @@ const Favorites = () => {
   const [favoriteData, setFavoritesData] = useState([])
 
   const postFavoritesTitle = async () => {
-    await favoritesService.postFavorites(title)
+    try {
+      await favoritesService.postFavorites(title)
+      alert("Successfully posted movie to Watched List")
+    } catch (error) {
+      alert("Title does not exists in Watched List")
+
+    }
   }
 
   const getFavoritesTitle = async () => {
@@ -23,13 +29,19 @@ const Favorites = () => {
   }
 
   const deleteFavoriteTitle = async () => {
-    let newId = 0
-    favoriteData.map(favorite => {
+    try {
+      let newId = 0
+      favoriteData.map(favorite => {
       if(favorite.title === title) {
         newId = favorite.id
       }
-    })
-    await favoritesService.deleteFavorites(newId)
+      })
+      await favoritesService.deleteFavorites(newId)
+      alert("Successfully deleted the title")
+    } catch (error) {
+      alert("Watched List does not contain the title")
+    }
+    
    
   }
 

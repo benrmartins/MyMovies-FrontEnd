@@ -20,7 +20,7 @@ const getReviews = async() => {
 
   const getAllReviews = async() => {
     return await axios
-      .get(API_URL + `/all`,  
+      .get(API_URL + `/all`,
     { headers: {"Authorization": `Bearer ${JSON.parse(localStorage.getItem("user")).token}`} })
   };
   
