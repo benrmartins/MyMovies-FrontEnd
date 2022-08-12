@@ -8,6 +8,7 @@ import Input from "../common/Input";
 import Button from "../common/Button";
 import BorderCardAdv from "../common/BorderCardAdv";
 import HorizontalLine from "../common/HorizontalLine";
+import reviewService from "../services/review.service";
 
 
 const Review = () => {
@@ -51,17 +52,42 @@ const Review = () => {
     }
   }
 
+  const reviewGetAll = async (e) => {
+    setReviews([])
+    try {
+      const res = await ReviewService.getAllReviews();
+
+      setReviews(res.data)
+
+      
+    } catch(err) {
+      console.log(err)
+    }
+  }
+
+  const deleteReviewTitle = async () => {
+    let newId = 0
+    reviews.map(review => {
+      if(review.movieTitle === movieTitle) {
+        newId = review.id
+      }
+    })
+    await reviewService.deleteReviews(newId)
+   
+  }
+
+
   const displayReviews = () => {
     console.log("hi")
     return reviews.map(review => {
       return(
-        <BorderCardAdv style={{flexDirection: "column"}}>
+        <BorderCardAdv style={{flexDirection: "column", textAlign: "center"}}>
+            <p key={review.id}>Name: {review.profile.firstName + " " + review.profile.lastName}</p>
             <p key={review.id}>Movie Title: {review.movieTitle}</p>
             <p key={review.id}>Body: {review.body}</p>
             <p key={review.id}>Rate: {review.rating}</p>
             
         </BorderCardAdv>
-
       
       )
     })
@@ -103,6 +129,23 @@ const Review = () => {
       </Form>
 
       <Button onClick={reviewGet}>Click to show all your reviews</Button>
+      <br></br>
+      <Form>
+        <InlineInputContainer>
+            <Input 
+              type="text"
+              placeholder="Delete Movie Title"
+              value={movieTitle}
+              onChange={(e) => setMovieTitle(e.target.value)}
+            />
+          </InlineInputContainer>
+        </Form>
+
+      <Button onClick={deleteReviewTitle}>Click to delete your review by title</Button>
+      <br></br>
+
+      <Button onClick={reviewGetAll}>Click to show all reviews</Button>
+
 
       {reviews.length === 0 ? null : (
         <Fragment>
