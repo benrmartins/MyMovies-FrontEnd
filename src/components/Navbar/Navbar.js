@@ -3,6 +3,7 @@ import NavButton from './NavButton';
 import { useNavigate } from "react-router-dom";
 
 
+
 const Navbar = (props) => {
 
   const navigate = useNavigate();
@@ -77,6 +78,7 @@ const Navbar = (props) => {
           margin: '0 10px',
           opacity: "100%"
           }}>Logout</button>
+
 
         </div>
       </div>

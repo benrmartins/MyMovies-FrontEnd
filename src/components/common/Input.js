@@ -37,7 +37,7 @@ const styles = {
     width: "100%",
     height: "auto",
     minWidth: 250,
-    margin: 0,
+    margin: 20,
     borderRadius: 5,
     flex: 1,
   },

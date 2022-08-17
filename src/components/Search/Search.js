@@ -5,8 +5,8 @@ import Container from "../common/Container";
 import Form from "../common/Form";
 import InlineInputContainer from "../common/InlineInputContainer";
 import Input from "../common/Input";
-import BorderCard from "../common/BorderCard";
 import HorizontalLine from "../common/HorizontalLine";
+
 
 const Search = () => {
   
@@ -71,6 +71,7 @@ const Search = () => {
     <Container>
       <Form>
       <h1>Search</h1>
+    
       <select 
         onChange={(e) => changeSearch(e.target.value)}
         value={search}>

@@ -27,7 +27,7 @@ const styles = {
     marginRight: 5,
     marginBottom: 10,
     marginTop: 25,
-    width: "50%",
+    width: "30%",
     borderRadius: 10,
     fontSize: 16,
     paddingTop: 5,

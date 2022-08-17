@@ -21,7 +21,7 @@ const Login = () => {
     try {
       await AuthService.login(username, password).then(
         () => {
-          navigate("/");
+          navigate("/Profile");
           window.location.reload();
         },
         (error) => {
@@ -50,12 +50,13 @@ const Login = () => {
   }
 
   return (
+    
     <Container>
       <h1>Login</h1>
     <Form onSubmit={handleLogin} style={{marginTop: '1em'}}>
       <InlineInputContainer>
         <Input 
-        type="text"
+        type="email"
         placeholder="email"
         value={username}
         onChange={(e) => setUsername(e.target.value)}

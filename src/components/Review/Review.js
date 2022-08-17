@@ -7,8 +7,8 @@ import InlineInputContainer from "../common/InlineInputContainer";
 import Input from "../common/Input";
 import Button from "../common/Button";
 import BorderCardAdv from "../common/BorderCardAdv";
-import HorizontalLine from "../common/HorizontalLine";
 import reviewService from "../services/review.service";
+
 
 
 const Review = () => {
@@ -91,12 +91,13 @@ const Review = () => {
   const displayReviews = () => {
     return reviews.map(review => {
       return(
+
+
         <BorderCardAdv style={{flexDirection: "column", textAlign: "center"}}>
             <p key={review.id}>Name: {review.profile.firstName + " " + review.profile.lastName}</p>
             <p key={review.id}>Movie Title: {review.movieTitle}</p>
             <p key={review.id}>Body: {review.body}</p>
             <p key={review.id}>Rate: {review.rating}</p>
-            
         </BorderCardAdv>
       
       )

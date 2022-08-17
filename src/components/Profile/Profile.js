@@ -43,22 +43,27 @@ const Profile = () => {
         for (let i = 0; i < response.data.length; i++) {
           if(response.data[i].user.username == JSON.parse(localStorage.getItem("user")).username) {
             localStorage.setItem("profile", JSON.stringify(response.data[i]));
+            return "sighed in"
           }
         }
-        alert("Succefuly Signed Into Your Proflie")
-
+        alert("Please create a profile")
     });
     } catch(err) {
-      console.log(err)
+      console.log(err);
+
     }
   }
 
   const deleteProfile = async () => {
     getYourProfiles()
     await ProfileServices.deleteProfile()
+    localStorage.removeItem("profile");
+    window.location.reload();
+
+
   }
 
- 
+
 
   return (
     
@@ -71,7 +76,7 @@ const Profile = () => {
             placeholder="First Name"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
-          />
+            required/>
         </InlineInputContainer>
         <InlineInputContainer>
           <Input
@@ -79,7 +84,7 @@ const Profile = () => {
             placeholder="Last Name"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
-          />
+            required/>
         </InlineInputContainer>
         <InlineInputContainer>
           <Input
@@ -87,7 +92,7 @@ const Profile = () => {
             placeholder="Age"
             value={age}
             onChange={(e) => setAge(e.target.value)}
-          />
+            required/>
         </InlineInputContainer>
         <InlineInputContainer>
           <Input
@@ -95,7 +100,7 @@ const Profile = () => {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-          />
+            required/>
         </InlineInputContainer>
         <InlineInputContainer>
           <Input
@@ -103,9 +108,13 @@ const Profile = () => {
             placeholder="Favorite Movie Genre"
             value={favoriteGenre}
             onChange={(e) => setFavoriteGenre(e.target.value)}
-          />
+            required/>
         </InlineInputContainer>
-        <Button>Submit</Button>
+        {localStorage.getItem("profile") != null ? <p>You have created a profile already</p>: (
+        
+          <Button>Submit</Button>
+        
+      )}
       </Form>
 
       <Button onClick={getYourProfiles}>Sign into profile if already created one</Button>
