@@ -38,11 +38,11 @@ const Register = () => {
       <Form onSubmit={handleSignup} style={{marginTop: '1em'}}>
         <InlineInputContainer>
           <Input 
-            type="text"
+            type="email"
             placeholder="email"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-          />
+            required/>
         </InlineInputContainer>
         <InlineInputContainer>
           <Input
@@ -50,7 +50,7 @@ const Register = () => {
             placeholder="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-          />
+            required/>
         </InlineInputContainer>
         <Button>Submit</Button>
       </Form>

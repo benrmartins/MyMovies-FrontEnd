@@ -52,16 +52,15 @@ const Watch = () => {
   const displayWatched = () => {
     return watchedData.map(watched => {
       return(
-        <Container>
-          <HorizontalLine></HorizontalLine>
-
+        
+        <div className="showSearch">
           <img src={"https://image.tmdb.org/t/p/w500/"+watched.poster_path} alt = ""/>
           <p key={watched.id}>Movie Title: {watched.title}</p>   
           <p key={watched.id}>Movie Release Date: {watched.release_date}</p>          
           <p key={watched.id}>Movie Rating: {watched.vote_average}</p>          
           <p key={watched.id}>Movie Overview: {watched.overview}</p>
+        </div>
 
-        </Container>
       )
     })
   }
@@ -71,7 +70,7 @@ const Watch = () => {
   return (
     <Container>
       <Form>
-        <h1>Save To Watched</h1>
+        <h1>Save To Watched List</h1>
         <InlineInputContainer>
             <Input
               type="text"
@@ -81,11 +80,11 @@ const Watch = () => {
             />
           </InlineInputContainer>
       </Form>
-      <Button onClick={postWatchedTitle}>Post To Watched List</Button>
+      <Button onClick={postWatchedTitle}>Save Movie</Button>
 
-      <Button onClick={deleteWatchedTitle}>Delete Title From Watch List</Button>
+      <Button onClick={deleteWatchedTitle}>Delete Movie Title </Button>
 
-      <Button onClick={getWatchedTitle}>Get Your Watched List</Button>
+      <Button onClick={getWatchedTitle}>Display List</Button>
 
 
       {watchedData.length == 0 ? null : (

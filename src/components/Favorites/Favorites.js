@@ -48,15 +48,13 @@ const Favorites = () => {
   const displayFavorites= () => {
     return favoriteData.map(favorite => {
       return(
-        <Container>
-          <HorizontalLine></HorizontalLine>
-
+        <div className="showSearch">
           <img src={"https://image.tmdb.org/t/p/w500/"+favorite.poster_path} alt = ""/>
           <p key={favorite.id}>Movie Title: {favorite.title}</p>
           <p key={favorite.id}>Movie Release Date: {favorite.release_date}</p>          
           <p key={favorite.id}>Movie Rating: {favorite.vote_average}</p>   
           <p key={favorite.id}>Movie Overview: {favorite.overview}</p>
-        </Container>
+        </div>
       )
     })
   }
@@ -76,12 +74,12 @@ const Favorites = () => {
             />
           </InlineInputContainer>
       </Form>
-      <Button onClick={postFavoritesTitle}>Post To Favorites List</Button>
+      <Button onClick={postFavoritesTitle}>Save Movie</Button>
 
-      <Button onClick={deleteFavoriteTitle}>Delete Title From Watched List</Button>
+      <Button onClick={deleteFavoriteTitle}>Delete Movie Title</Button>
 
 
-      <Button onClick={getFavoritesTitle}>Get Your Favorites List</Button>
+      <Button onClick={getFavoritesTitle}>Display List</Button>
 
       {favoriteData.length == 0 ? null : (
         <Fragment>

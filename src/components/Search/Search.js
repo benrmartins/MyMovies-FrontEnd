@@ -80,7 +80,7 @@ const Search = () => {
           <option value="upComming">Up Comming Movies</option>
           <option value="topRated">Top Rated Movies</option>
           <option value="popular">Popular Movies</option>
-          <option value="nowPlaying">Now PLaying Movies in Theaters</option>
+          <option value="nowPlaying">Now Playing Theaters</option>
       </select>
       
       <h3>Search By Title</h3>

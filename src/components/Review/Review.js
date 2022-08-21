@@ -92,12 +92,13 @@ const Review = () => {
 
 
   const displayReviews = () => {
+    let i = 1;
     return reviews.map(review => {
       return(
 
         <BorderCardAdv style={{flexDirection: "column", textAlign: "center"}}>
-            <div className="reviewNumber"><div>1</div></div>
-            <div className="deleteReview"><button key={review.id} onClick={deleteRev(review.id)}>X</button></div>
+            <div className="reviewNumber"><div>{i++}</div></div>
+            <div className="deleteReview"><button key={review.id} onClick={async () => await reviewService.deleteReviews(review.id)}>X</button></div>
             <p key={review.id}><b>Name:</b> {review.profile.firstName + " " + review.profile.lastName}</p>
             <p key={review.id}><b>Movie Title:</b> {review.movieTitle}</p>
             <p key={review.id}><b>Body:</b> {review.body}</p>
@@ -121,7 +122,7 @@ const Review = () => {
             placeholder="Movie Title"
             value={movieTitle}
             onChange={(e) => setMovieTitle(e.target.value)}
-          />
+            required/>
         </InlineInputContainer>
         <InlineInputContainer>
           <Input
@@ -129,7 +130,7 @@ const Review = () => {
             placeholder="Review"
             value={body}
             onChange={(e) => setBody(e.target.value)}
-          />
+            required/>
           <InlineInputContainer>
           <Input
             type="number"

@@ -60,7 +60,7 @@ const Login = () => {
         placeholder="email"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
-        />
+        required/>
       </InlineInputContainer>
       <InlineInputContainer>
         <Input
@@ -68,7 +68,7 @@ const Login = () => {
         placeholder="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        />
+        required/>
       </InlineInputContainer>
       <Button onClick={getYourProfiles}>Submit</Button>
     </Form>

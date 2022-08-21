@@ -49,16 +49,15 @@ const WantToWatch = () => {
   const displayWantToWatch = () => {
     return wantToWatchData.map(wantToWatch => {
       return(
-        <Container>
-          <HorizontalLine></HorizontalLine>
-
+        
+        <div className="showSearch">
           <img src={"https://image.tmdb.org/t/p/w500/"+wantToWatch.poster_path} alt = ""/>
           <p key={wantToWatch.id}>Movie Title: {wantToWatch.title}</p>          
           <p key={wantToWatch.id}>Movie Release Date: {wantToWatch.release_date}</p>          
           <p key={wantToWatch.id}>Movie Rating: {wantToWatch.vote_average}</p>   
           <p key={wantToWatch.id}>Movie Overview: {wantToWatch.overview}</p>
+        </div>
 
-        </Container>
       )
     })
   }
@@ -68,7 +67,7 @@ const WantToWatch = () => {
   return (
     <Container>
       <Form>
-        <h1>Save To Want To Watch</h1>
+        <h1>Save To Want To Watch List</h1>
         <InlineInputContainer>
             <Input
               type="text"
@@ -78,11 +77,11 @@ const WantToWatch = () => {
             />
           </InlineInputContainer>
       </Form>
-      <Button onClick={postWantToWatchTitle}>Post To Want To Watch List</Button>
+      <Button onClick={postWantToWatchTitle}>Save Movie</Button>
 
-      <Button onClick={deleteWantToWatchTitle}>Delete Title From Want To Watch List</Button>
+      <Button onClick={deleteWantToWatchTitle}>Delete Movie Title</Button>
 
-      <Button onClick={getWantToWatchTitle}>Get Your Want To Watch List</Button>
+      <Button onClick={getWantToWatchTitle}>Display List</Button>
 
       {wantToWatchData.length == 0 ? null : (
         <Fragment>
