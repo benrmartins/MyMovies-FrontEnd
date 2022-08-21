@@ -42,14 +42,15 @@ const Search = () => {
     console.log(searchdata)
     return searchdata.map(search => {
       return(
-        <Container>
-         <img src={"https://image.tmdb.org/t/p/w500/"+search.poster_path} alt = ""/>
-          <p key={search.id}>Movie Title: {search.title}</p>
-          <p key={search.id}>Movie Release Date: {search.release_date}</p>          
-          <p key={search.id}>Movie Rating: {search.vote_average}</p>          
-          <p key={search.id}>Movie Overview: {search.overview}</p>
-          <HorizontalLine>        </HorizontalLine>
-        </Container>
+
+          <div className="showSearch">
+            <img src={"https://image.tmdb.org/t/p/w500/"+search.poster_path} alt = ""/>
+            <div key={search.id}><b>Movie Title:</b> {search.title}</div>
+            <div key={search.id}><b>Movie Release Date:</b> {search.release_date}</div>          
+            <div key={search.id}><b>Movie Rating:</b> {search.vote_average}</div>          
+            <div key={search.id}><b>Movie Overview:</b> {search.overview}</div>
+          </div>
+
       )
     })
   }
@@ -74,8 +75,8 @@ const Search = () => {
     
       <select 
         onChange={(e) => changeSearch(e.target.value)}
-        value={search}>
-          <option value="">Select</option>
+        value={search} className="selectMovie">
+          <option value="">Search Movie By Title</option>
           <option value="upComming">Up Comming Movies</option>
           <option value="topRated">Top Rated Movies</option>
           <option value="popular">Popular Movies</option>

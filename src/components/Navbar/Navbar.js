@@ -19,7 +19,7 @@ const Navbar = (props) => {
   return (
     <Fragment>
       <div style={{
-        backgroundColor: "grey",
+        backgroundColor: "#b10303",
         position: 'fixed',
         width: '100%',
         zIndex: 9999,
@@ -34,12 +34,13 @@ const Navbar = (props) => {
           fontFamily: "monospace",
           fontWeight: 'bold',
           fontSize: '2.5em',
-          margin: "0 20px"
+          margin: "0 20px",
+          color: "#fff"
         }}>MyMovies</h1>
 
         
         <div style={{
-          margin: '0 230px',
+          margin: '0 20px',
           flexDirection: 'row',
           background: "transparent",
           userSelect: "none",
@@ -47,6 +48,7 @@ const Navbar = (props) => {
         }}>
           {localStorage.getItem("user") ? (<p style={{fontFamily: "monospace",
           margin: '25px',
+          color: '#fff',
           fontWeight: 'bold',
           fontSize: '1.5em'}}>
           {JSON.parse(localStorage.getItem("user")).username}</p>) : null}
@@ -67,10 +69,13 @@ const Navbar = (props) => {
               </Fragment>
           )}
           <button onClick={logout} style={{margin: '0 20px',
-          background: 'gray',
+          background: '#fff',
+          border: "0px",
+          borderRadius: "5px",
+          padding: "10px 20px",
           textDecoration: 'none',
           fontSize: '1.25em',
-          color: "#010101",
+          color: "#b10303",
           fontWeight: 600,
           textShadow: '1px 1px #2fbe9b',
           textAlign: 'center',

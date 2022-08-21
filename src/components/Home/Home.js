@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <Container>
       <Splash image={homesplash} style={{color: "#010101"}}>
-        <h1 style={{textShadow: '1px 1px white'}}>Welcome to MyMovies!</h1>
+        <h1 style={{fontSize: '46px', textShadow: '1px 1px white'}}>Welcome to MyMovies!</h1>
       </Splash>
 
     </Container>

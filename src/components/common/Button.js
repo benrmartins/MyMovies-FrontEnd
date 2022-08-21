@@ -21,17 +21,20 @@ const Button = (props) => {
 
 const styles = {
   button: {
+    cursor: 'pointer',
     alignSelf: 'center',
-    backgroundColor: 'grey',
+    backgroundColor: '#b10303',
+    color: '#fff',
+    padding: 15,
+    border: '0',
     marginLeft: 5,
     marginRight: 5,
     marginBottom: 10,
     marginTop: 25,
-    width: "30%",
-    borderRadius: 10,
+    width: "100%",
+    maxWidth: "250px",
+    borderRadius: '5px',
     fontSize: 16,
-    paddingTop: 5,
-    paddingBottom: 5,
     fontWeight: "bold",
     fontFamily: "sans-serif"
   }

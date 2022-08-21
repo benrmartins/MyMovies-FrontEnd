@@ -55,10 +55,9 @@ class BorderCardAdv extends Component {
 
 const myStyle = {
   card: {
-    border: "1px solid #171717",
+    // border: "1px solid #171717",
     borderRadius: 5,
     marginBottom: 25,
-    padding: "0 8px",
     width: "80%",
     maxWidth: 500,
     backgroundColor: "#f7f7f7",

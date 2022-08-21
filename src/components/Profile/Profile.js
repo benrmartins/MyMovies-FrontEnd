@@ -43,6 +43,7 @@ const Profile = () => {
         for (let i = 0; i < response.data.length; i++) {
           if(response.data[i].user.username == JSON.parse(localStorage.getItem("user")).username) {
             localStorage.setItem("profile", JSON.stringify(response.data[i]));
+            window.location.reload();
             return "sighed in"
           }
         }
@@ -110,14 +111,14 @@ const Profile = () => {
             onChange={(e) => setFavoriteGenre(e.target.value)}
             required/>
         </InlineInputContainer>
-        {localStorage.getItem("profile") != null ? <p>You have created a profile already</p>: (
+        {localStorage.getItem("profile") != null ? <p className="existingprofile">This profile already exists!</p>: (
         
           <Button>Submit</Button>
         
       )}
       </Form>
 
-      <Button onClick={getYourProfiles}>Sign into profile if already created one</Button>
+      <Button onClick={getYourProfiles}>Signin to Profile</Button>
 
       <Button onClick={deleteProfile}>Delete Profile</Button>
 

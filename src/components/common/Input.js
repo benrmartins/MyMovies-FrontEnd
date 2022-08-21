@@ -35,7 +35,7 @@ const styles = {
     fontSize: 18,
     border: "1px solid #d9d9d9",
     width: "100%",
-    height: "auto",
+    height: "40px",
     minWidth: 250,
     margin: 20,
     borderRadius: 5,

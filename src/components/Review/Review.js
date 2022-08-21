@@ -83,8 +83,11 @@ const Review = () => {
     } catch (error) {
       alert("There is no review with that movie title")
     }
-    
    
+  }
+
+  const deleteRev = async (newId) => {
+    await reviewService.deleteReviews(newId)
   }
 
 
@@ -92,14 +95,14 @@ const Review = () => {
     return reviews.map(review => {
       return(
 
-
         <BorderCardAdv style={{flexDirection: "column", textAlign: "center"}}>
-            <p key={review.id}>Name: {review.profile.firstName + " " + review.profile.lastName}</p>
-            <p key={review.id}>Movie Title: {review.movieTitle}</p>
-            <p key={review.id}>Body: {review.body}</p>
-            <p key={review.id}>Rate: {review.rating}</p>
+            <div className="reviewNumber"><div>1</div></div>
+            <div className="deleteReview"><button key={review.id} onClick={deleteRev(review.id)}>X</button></div>
+            <p key={review.id}><b>Name:</b> {review.profile.firstName + " " + review.profile.lastName}</p>
+            <p key={review.id}><b>Movie Title:</b> {review.movieTitle}</p>
+            <p key={review.id}><b>Body:</b> {review.body}</p>
+            <p key={review.id}><b>Rate:</b> {review.rating}</p>
         </BorderCardAdv>
-      
       )
     })
   }
@@ -139,9 +142,9 @@ const Review = () => {
         <Button>Submit</Button>
       </Form>
 
-      <Button onClick={reviewGet}>Click to show all your reviews</Button>
-      <br></br>
-      <Form>
+      <Button onClick={reviewGet}>Show All Your Reviews</Button>
+
+      {/* <Form>
         <InlineInputContainer>
             <Input 
               type="text"
@@ -152,10 +155,10 @@ const Review = () => {
           </InlineInputContainer>
         </Form>
 
-      <Button onClick={deleteReviewTitle}>Click to delete your review by title</Button>
-      <br></br>
+      <Button onClick={deleteReviewTitle}>Delete Your Review By Title</Button>
+      <br></br> */}
 
-      <Button onClick={reviewGetAll}>Click to show all reviews</Button>
+      <Button onClick={reviewGetAll}>Show All Reviews</Button>
 
 
       {reviews.length === 0 ? null : (
